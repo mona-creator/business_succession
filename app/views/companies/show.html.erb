@@ -1,0 +1,103 @@
+<%= render 'layouts/header' %>
+
+	<div class="col-xs-offset-1 col-xs-10">
+
+		<h1>企業詳細</h1>
+        <h2><%= link_to "Edit",edit_company_path(@company) %></h2>
+        <table>
+         <tbody>
+         	<tr>
+         	<td>企業名</td>
+		    <td><%= @company.company_name %></td>
+　　　　　　 </tr>
+            <tr>
+            <td>業種</td>
+		    <td><%= @company.industry %></td>
+		    </tr>
+		    <tr>
+            <td>売上高</td>
+		    <td><%= @company.sale %></td>
+		    </tr>
+		    <tr>
+            <td>営業利益</td>
+		    <td><%= @company.operating_income %></td>
+		    </tr>
+		    <tr>
+            <td>売却希望価格</td>
+		    <td><%= @company.disposal_desired_price %></td>
+            </tr>
+            <tr>
+            <td>所在地</td>
+		    <td><%= @company.company_address %></td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tbody>
+        	<h3>財務情報</h3>
+            <tr>
+            <td>会計年度</td>
+		    <td><%= @company.fiscal_year %></td>
+            </tr>
+            <tr>
+            <td>総資産</td>
+		    <td><%= @company.total_asset %></td>
+            </tr>
+            <tr>
+            <td>有利子負債</td>
+		    <td><%= @company.interest_bearing_debt %></td>
+            </tr>
+            <tr>
+            <td>純資産</td>
+		    <td><%= @company.net_asset %></td>
+            </tr>
+        </tbody>
+       </table>
+       <table>
+       	<tbody>
+       		<h3>案件概要</h3>
+            <tr>
+            <td>従業員数</td>
+		    <td><%= @company.employee_number %></td>
+            </tr>
+            <tr>
+            <td>譲渡対象遺産</td>
+		    <td><%= @company.transfer_target_asset %></td>
+            </tr>
+            <tr>
+            <td>譲渡理由</td>
+		    <td><%= @company.transfer_reason %></td>
+		    </tr>
+		 </tbody>
+		</table>
+		<table>
+		<tbody>
+			<h3>ビジネスモデル</h3>
+		    <tr>
+            <td>事業内容</td>
+		    <td><%= @company.business_overview %></td>
+            </tr>
+            <tr>
+            <td>顧客</td>
+		    <td><%= @company.customer %></td>
+            </tr>
+            <tr>
+            <td>製品サービス</td>
+		    <td><%= @company.product_service %></td>
+            </tr>
+            <tr>
+            <td>事業概要</td>
+		    <td><%= @company.business_overview %></td>
+            </tr>
+            <tr>
+            <td>事業の強み</td>
+		    <td><%= @company.business_strength %></td>
+            </tr>
+            <tr>
+            <td>補足情報</td>
+		    <td><%= @company.supplement_information %></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3><%= link_to "戻る", companies_path %></h3>

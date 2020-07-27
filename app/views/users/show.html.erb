@@ -1,0 +1,37 @@
+<%= render 'layouts/header' %>
+
+<h2>マイページ</h2>
+
+		<table>
+			<th>登録情報</th>
+			<td><%= link_to "編集する", edit_user_path, class: "btn btn-primary mypage-btn-1" %></td>
+		</table>
+
+		<table class="table table-bordered mypage-table">
+			<tbody>
+				<tr>
+					<td class="active", style="width:150px">氏名</td>
+					<td><%= @user.surname %><%= @user.first_name %></td>
+				</tr>
+				<tr>
+					<td class="active">カナ</td>
+					<td><%= @user.surname_kana %><%= @user.first_name_kana %></td>
+				</tr>
+				<tr>
+					<td class="active">郵便番号</td>
+					<td><%= @user.postal_code %></td>
+				</tr>
+				<tr>
+					<td class="active">住所</td>
+					<td><%= @user.address %></td>
+				</tr>
+				<tr>
+					<td class="active">電話番号</td>
+					<td><%= @user.phone_number %></td>
+				</tr>
+				<tr>
+					<td class="active">メールアドレス</td>
+					<td><%= @user.email %></td>
+				</tr>
+			</tbody>
+		</table>

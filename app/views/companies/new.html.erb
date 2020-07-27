@@ -1,0 +1,108 @@
+<%= render 'layouts/header' %>
+
+	<div class="col-xs-offset-1 col-xs-10">
+
+		<h1>新規登録 企業詳細</h1>
+
+		<%= form_for(@company) do |f| %>
+
+		    <div class="field form-group">
+				<%= f.label :企業名（屋号） %>
+				<%= f.text_field :company_name, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :業種 %>
+				<%= f.text_field :industry, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :売上高（百万円） %>
+				<%= f.text_field :sale, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :営業利益（百万円） %>
+				<%= f.text_field :operating_income, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :売却希望価格（百万円） %>
+				<%= f.text_field :disposal_desired_price, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :所在地 %>
+				<%= f.text_field :company_address, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :会計年度（西暦） %>
+				<%= f.text_field :fiscal_year, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :総資産（百万円） %>
+				<%= f.text_field :total_asset, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :有利子負債（百万円） %>
+				<%= f.text_field :interest_bearing_debt, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :純資産（百万円） %>
+				<%= f.text_field :net_asset, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :従業員数 %>
+				<%= f.text_field :employee_number, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :譲渡対象遺産 %>
+				<%= f.text_field :transfer_target_asset, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :譲渡理由 %>
+				<%= f.text_field :transfer_reason, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :事業概要 %>
+				<%= f.text_area :business_overview, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :顧客 %>
+				<%= f.text_field :customer, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :製品サービス %>
+				<%= f.text_area :product_service, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :事業概要 %>
+				<%= f.text_area :business_overview, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :事業の強み %>
+				<%= f.text_area :business_strength, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :補足情報 %>
+				<%= f.text_area :supplement_information, autofocus: true %>
+			</div>
+
+			<div class="actions row">
+				<%= f.submit class: "btn btn-primary col-xs-12" %>
+			</div>
+		<% end %>
+	</div>
