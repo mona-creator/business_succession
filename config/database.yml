@@ -28,5 +28,5 @@ production:
   charset: utf8mb4
   collation: utf8mb4_general_ci
   host: <%= ENV['rds-mysql-server.chcgaszobmei.ap-northeast-1.rds.amazonaws.com'] %>
-  username: <%= ENV['mona'] %>
+  username: <%= ENV['root'] %>
   password: <%= ENV['mona1129!'] %>
