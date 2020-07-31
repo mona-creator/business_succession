@@ -17,6 +17,21 @@
 			</div>
 
 		    <div class="field form-group">
+				<%= f.label :売却希望価格（百万円） %>
+				<%= f.text_field :disposal_desired_price, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
+				<%= f.label :会計年度（西暦） %>
+				<%= f.text_field :fiscal_year, autofocus: true %>
+			</div>
+
+			 <div class="field form-group">
+				<%= f.label :所在地 %>
+				<%= f.text_field :company_address, autofocus: true %>
+			</div>
+
+		    <div class="field form-group">
 				<%= f.label :売上高（百万円） %>
 				<%= f.text_field :sale, autofocus: true %>
 			</div>
@@ -24,21 +39,6 @@
 		    <div class="field form-group">
 				<%= f.label :営業利益（百万円） %>
 				<%= f.text_field :operating_income, autofocus: true %>
-			</div>
-
-		    <div class="field form-group">
-				<%= f.label :売却希望価格（百万円） %>
-				<%= f.text_field :disposal_desired_price, autofocus: true %>
-			</div>
-
-		    <div class="field form-group">
-				<%= f.label :所在地 %>
-				<%= f.text_field :company_address, autofocus: true %>
-			</div>
-
-		    <div class="field form-group">
-				<%= f.label :会計年度（西暦） %>
-				<%= f.text_field :fiscal_year, autofocus: true %>
 			</div>
 
 		    <div class="field form-group">

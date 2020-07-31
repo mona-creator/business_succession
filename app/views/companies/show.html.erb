@@ -1,103 +1,152 @@
 <%= render 'layouts/header' %>
 
-	<div class="col-xs-offset-1 col-xs-10">
+    <div class="col-xs-offset-1 col-xs-10">
 
-		<h1>企業詳細</h1>
+        <h1><%= @company.company_name %></h1>
+                        <% if @company.favorited_by?(current_user) %>
+                            <%= link_to company_favorites_path(@company), method: :delete do %>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"style="color: rgb(250, 194, 1);"></span>
+                            <%= @company.favorites.count %> 気になる
+                            <% end %>
+                        <% else %>
+                            <%= link_to company_favorites_path(@company), method: :post do %>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <%= @company.favorites.count %> 気になる
+                            <% end %>
+                        <% end %>
+         <%= @company.company_comments.count %>件コメント
+
+        <% if @company.user == current_user %>
+        <%= link_to "", company_path(@company), method: :delete %>
         <h2><%= link_to "Edit",edit_company_path(@company) %></h2>
-        <table>
+        <% end %>
+     <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="active">業種</th>
+            <th class="active">売上高</th>
+            <th class="active">営業利益</th>
+            <th class="active">売却希望価格</th>
+            <th class="active">所在地</th>
+        </tr>
+        </thead>
          <tbody>
-         	<tr>
-         	<td>企業名</td>
-		    <td><%= @company.company_name %></td>
-　　　　　　 </tr>
-            <tr>
-            <td>業種</td>
-		    <td><%= @company.industry %></td>
-		    </tr>
-		    <tr>
-            <td>売上高</td>
-		    <td><%= @company.sale %></td>
-		    </tr>
-		    <tr>
-            <td>営業利益</td>
-		    <td><%= @company.operating_income %></td>
-		    </tr>
-		    <tr>
-            <td>売却希望価格</td>
-		    <td><%= @company.disposal_desired_price %></td>
-            </tr>
-            <tr>
-            <td>所在地</td>
-		    <td><%= @company.company_address %></td>
-            </tr>
+            <td><%= @company.industry %></td>
+            <td><%= @company.sale %>百万円</td>
+            <td><%= @company.operating_income %>百万円</td>
+            <td><%= @company.disposal_desired_price %>百万円</td>
+            <td><%= @company.company_address %></td>
         </tbody>
     </table>
-    <table>
+    </div>
+    <h3 class="col-xs-offset-1 col-xs-10">財務情報</h3>
+    <div class="col-xs-offset-1 col-xs-5">
+        <table class="table table-bordered company-table">
         <tbody>
-        	<h3>財務情報</h3>
             <tr>
-            <td>会計年度</td>
-		    <td><%= @company.fiscal_year %></td>
+            <th class="active", style="width:150px">会計年度</th>
+            <td><%= @company.fiscal_year %>年度</td>
             </tr>
             <tr>
-            <td>総資産</td>
-		    <td><%= @company.total_asset %></td>
+            <th class="active">売上高</th>
+		    <td><%= @company.total_asset %>百万円</td>
             </tr>
             <tr>
-            <td>有利子負債</td>
-		    <td><%= @company.interest_bearing_debt %></td>
-            </tr>
-            <tr>
-            <td>純資産</td>
-		    <td><%= @company.net_asset %></td>
+            <th class="active">営業利益</th>
+		    <td><%= @company.interest_bearing_debt %>百万円</td>
             </tr>
         </tbody>
        </table>
-       <table>
+    </div>
+    <div class="col-xs-5">
+        <table class="table table-bordered company-financial-table">
+        <tbody>
+            <tr>
+            <th class="active">総資産</th>
+            <td><%= @company.total_asset %>百万円</td>
+            </tr>
+            <tr>
+            <th class="active">有利子負債</th>
+            <td><%= @company.interest_bearing_debt %>百万円</td>
+            </tr>
+            <tr>
+            <th class="active">純資産</th>
+            <td><%= @company.net_asset %>百万円</td>
+            </tr>
+        </tbody>
+       </table>
+    </div>
+    <div class="col-xs-offset-1 col-xs-10">
+        <table class="table table-bordered company-table">
        	<tbody>
        		<h3>案件概要</h3>
             <tr>
-            <td>従業員数</td>
-		    <td><%= @company.employee_number %></td>
+            <th class="active", style="width:150px">従業員数</th>
+		    <td><%= @company.employee_number %>人</td>
             </tr>
             <tr>
-            <td>譲渡対象遺産</td>
+            <th class="active">譲渡対象遺産</th>
 		    <td><%= @company.transfer_target_asset %></td>
             </tr>
             <tr>
-            <td>譲渡理由</td>
+            <th class="active">譲渡理由</th>
 		    <td><%= @company.transfer_reason %></td>
 		    </tr>
 		 </tbody>
 		</table>
-		<table>
-		<tbody>
+        <table class="table table-bordered company-table">
+		 <tbody>
 			<h3>ビジネスモデル</h3>
 		    <tr>
-            <td>事業内容</td>
+            <th class="active", style="width:150px">事業内容</th>
 		    <td><%= @company.business_overview %></td>
             </tr>
             <tr>
-            <td>顧客</td>
+            <th class="active">顧客</th>
 		    <td><%= @company.customer %></td>
             </tr>
             <tr>
-            <td>製品サービス</td>
+            <th class="active">製品サービス</th>
 		    <td><%= @company.product_service %></td>
             </tr>
             <tr>
-            <td>事業概要</td>
+            <th class="active">事業概要</th>
 		    <td><%= @company.business_overview %></td>
             </tr>
             <tr>
-            <td>事業の強み</td>
+            <th class="active">事業の強み</th>
 		    <td><%= @company.business_strength %></td>
             </tr>
             <tr>
-            <td>補足情報</td>
+            <th class="active">補足情報</th>
 		    <td><%= @company.supplement_information %></td>
             </tr>
-        </tbody>
-    </table>
-
-    <h3><%= link_to "戻る", companies_path %></h3>
+         </tbody>
+        </table>
+    <table>
+            <tbody>
+              <% @company.company_comments.each do |company_comment| %>
+               <tr>
+                   <td>
+                    <%= company_comment.user.surname %>
+                   </td>
+                   <td><%= company_comment.comment %></td>
+                   <td>
+                    <% if company_comment.user == current_user %>
+                    <%= link_to "Destroy",company_company_comment_path(company_comment.id), method: :delete, class: "btn-sm btn-danger" %>
+                        <% end %>
+                    </td>
+               </tr>
+              <% end %>
+            </tbody>
+        </table>
+        <%= form_for [@company, @company_comment] do |f| %>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+                    </div>
+                </div>
+              <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+        <% end %>
+    </div>
+    
