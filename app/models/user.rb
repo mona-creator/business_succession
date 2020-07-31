@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :companies, dependent: :destroy
-
+  has_many :company_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end
 

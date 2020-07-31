@@ -13,12 +13,12 @@ class CompaniesController < ApplicationController
 
 	def index
     @companies = Company.all
-    @businesses = ['業種','売上高','営業利益','売却希望価格','所在地']
-
 	end
 
 	def show
     @company = Company.find(params[:id])
+    @user = current_user
+    @company_comment = CompanyComment.new
 	end
 
 	def edit
