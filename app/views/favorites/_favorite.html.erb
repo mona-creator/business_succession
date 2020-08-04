@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+    <% if company.favorited_by?(current_user) %>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"style="color: rgb(250, 194, 1);"></span>
+        <%= link_to company.favorites.count, company_favorites_path(company.id), method: :delete, remote: true %>気になる:
+    <% else %>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <%= link_to company.favorites.count, company_favorites_path(company.id), method: :post, remote: true %>気になる:
+    <% end %>
+<% end %>

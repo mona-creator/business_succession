@@ -12,8 +12,13 @@ class CompaniesController < ApplicationController
 	end
 
 	def index
-    @companies = Company.all
+    #@companies = Company.all
+    @companies = Company.search(params[:search])
 	end
+
+  def ranks
+      @all_ranks = Company.find(Favorite.group(:company_id).order('count(company_id)desc').limit(3).pluck(:company_id))
+  end
 
 	def show
     @company = Company.find(params[:id])
@@ -32,6 +37,9 @@ class CompaniesController < ApplicationController
 	end
 
 	def destroy
+    @company = Company.find(params[:id])
+    @company.destroy
+    redirect_to user_path(current_user)
 	end
 
 private
