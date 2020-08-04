@@ -1,39 +1,33 @@
 <%= render 'layouts/header' %>
-
-<div class="col-xs-offset-1 col-xs-10">
-
-<h1>事業一覧</h1>
-    <% @companies.each do |company| %>
-    <table class="table table-bordered">
-	<thead>
-		<tr>
-			<th class="active">業種</th>
-			<th class="active">売上高</th>
-			<th class="active">営業利益</th>
-			<th class="active">売却希望価格</th>
-			<th class="active">所在地</th>
-		</tr>
-	</thead>
-         <tbody>
-         	<h2><%= link_to  company.company_name, company, class: "company_#{company.id}" %></h2>
-         	 <% if company.favorited_by?(current_user) %>
-                            <%= link_to company_favorites_path(company), method: :delete do %>
-                            <span class="glyphicon glyphicon-star" aria-hidden="true"style="color: rgb(250, 194, 1);"></span>
-                            <%= company.favorites.count %> 気になる
-                            <% end %>
-                        <% else %>
-                            <%= link_to company_favorites_path(company), method: :post do %>
-                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                            <%= company.favorites.count %> 気になる
-                            <% end %>
-                        <% end %>
-         	<%= company.company_comments.count %>件コメント
-		    <td><%= company.industry %></td>
-		    <td><%= company.sale %></td>
-		    <td><%= company.operating_income %></td>
-		    <td><%= company.disposal_desired_price %></td>
-		    <td><%= company.company_address %></td>
-        </tbody>
-    </table>
-   <% end %>
-
+    <div class="col-xs-offset-1 col-xs-10">
+        <%= form_tag(companies_path, :method=>"get") do %>
+            <%= text_field_tag :search %>
+                <%= submit_tag 'Search', :company_name => nil, class:"button is-info" %>
+        <% end %>
+        <h1>事業一覧</h1>
+            <% @companies.each do |company| %>
+                <table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="active">業種</th>
+							<th class="active">売上高</th>
+							<th class="active">営業利益</th>
+							<th class="active">売却希望価格</th>
+							<th class="active">所在地</th>
+						</tr>
+					</thead>
+                    <tbody>
+         	        <h2><%= link_to  company.company_name, company, class: "company_#{company.id}" %></h2>
+                    <div id="favorites_buttons_<%= company.id %>">
+                        <%= render partial: 'favorites/favorite', locals: { company: company} %>
+         	            <%= company.company_comments.count %>件コメント
+                    </div>
+						    <td><%= company.industry %></td>
+						    <td><%= company.sale %></td>
+						    <td><%= company.operating_income %></td>
+						    <td><%= company.disposal_desired_price %></td>
+						    <td><%= company.company_address %></td>
+                    </tbody>
+                 </table>
+            <% end %>
+    </div>

@@ -1,0 +1,28 @@
+<%= render 'layouts/header' %>
+    <div class="col-xs-offset-1 col-xs-10">
+        <h2>気になるランキング</h2>
+        <% @all_ranks.each.with_index(1) do |company, i| %>
+		    <table class="table table-bordered">
+			    <thead>
+				    <tr>
+						<th class="active">業種</th>
+						<th class="active">売上高</th>
+						<th class="active">営業利益</th>
+						<th class="active">売却希望価格</th>
+						<th class="active">所在地</th>
+  				    </tr>
+			    </thead>
+		        <h2>第<%= i %>位<%= link_to  company.company_name, company, class: "company_#{company.id}" %></h2>
+		        <div id="favorites_buttons_<%= company.id %>">
+		            <%= render partial: 'favorites/favorite', locals: { company: company} %>
+		            <%= company.company_comments.count %>件コメント
+		        </div>
+		    	<tbody>
+				    <td><%= company.industry %></td>
+				    <td><%= company.sale %>百万円</td>
+				    <td><%= company.operating_income %>百万円</td>
+				    <td><%= company.disposal_desired_price %>百万円</td>
+				    <td><%= company.company_address %></td>
+		        </tbody>
+		    </table>
+		<% end %>

@@ -6,4 +6,12 @@ class Company < ApplicationRecord
 	def favorited_by?(user)
       favorites.where(user_id: user.id).exists?
     end
+
+    def self.search(search)
+       if search
+       	where(['company_name LIKE? OR industry LIKE? OR company_address LIKE?',"%#{search}%", "%#{search}%", "%#{search}%"])
+       else
+       	all
+       end
+    end
 end

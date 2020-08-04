@@ -8,36 +8,37 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
     <body>
-    <header class="navbar">
-      <div class="container-fluid">
-        <nav class='nav navbar-nav navbar-left' >
-          <h1><%= link_to 'Business Succession', root_path %></h1>
-        </nav>
+      <header class="navbar">
+        <div class="container-fluid">
+          <nav class='nav navbar-nav navbar-left' >
+            <h1><%= link_to 'Business Succession', root_path %></h1>
+          </nav>
           <nav>
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-                 <p class="navbar-text">ようこそ <%= current_user.surname %> さん !</p>
-                <li><%= link_to 'About', about_path,class: 'glyphicon glyphicon-log-in' %></li>
-                <li><%= link_to '事業を買う',companies_path,class: 'glyphicon glyphicon-home home' %></li>
-                <li><%= link_to '事業を売る',new_company_path,class: 'glyphicon glyphicon-cutlery' %></li>
-                <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
+                <p class="navbar-text">ようこそ <%= current_user.surname %> さん !</p>
+                  <li><%= link_to 'about', about_path %></li>
+                  <li><%= link_to 'マイページ',user_path(current_user) %></li>
+                  <li><%= link_to '事業を買う',companies_path %></li>
+                  <li><%= link_to '事業を売る',new_company_path %></li>
+                  <li><%= link_to 'ランキング',company_ranks_path %></li>
+                  <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
               <% else %>
-               <p class="navbar-text">ようこそ ゲスト さん !</p>
-                <li><%= link_to 'about', about_path,class: 'glyphicon glyphicon-log-in' %></li>
-                <li><%= link_to '事業を買う',companies_path,class: 'glyphicon glyphicon-cutlery' %></li>
-                <li><%= link_to '事業を売る',new_company_path,class: 'glyphicon glyphicon-cutlery' %></li>
-                <li><%= link_to ' 新規登録',new_user_registration_path,class: 'glyphicon glyphicon-edit' %></li>
-                <li><%= link_to ' ログイン', new_user_session_path,class: 'glyphicon glyphicon-log-in' %></li>
+                <p class="navbar-text">ようこそ ゲスト さん !</p>
+                  <li><%= link_to 'about', about_path %></li>
+                  <li><%= link_to '事業を買う',companies_path %></li>
+                  <li><%= link_to '事業を売る',new_company_path %></li>
+                  <li><%= link_to 'ランキング',company_ranks_path %></li>
+                  <li><%= link_to ' 新規登録',new_user_registration_path %></li>
+                  <li><%= link_to ' ログイン', new_user_session_path %></li>
               <% end %>
             </ul>
           </nav>
-      </div>
-    </header>
+        </div>
+      </header>
         <p id="notice"><%= notice %></p>
 
         <%= yield %>
-
-  </body>
+    </body>
 </html>
