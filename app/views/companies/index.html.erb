@@ -18,9 +18,11 @@
 					</thead>
                     <tbody>
          	        <h2><%= link_to  company.company_name, company, class: "company_#{company.id}" %></h2>
-                    <div id="favorites_buttons_<%= company.id %>">
-                        <%= render partial: 'favorites/favorite', locals: { company: company} %>
-         	            <%= company.company_comments.count %>件コメント
+                    <div>
+                        <span id="favorites_buttons_<%= company.id %>">
+                            <%= render partial: 'favorites/favorite', locals: { company: company} %>
+                        </span>
+                        <%= company.company_comments.count %>件コメント
                     </div>
 						    <td><%= company.industry %></td>
 						    <td><%= company.sale %></td>

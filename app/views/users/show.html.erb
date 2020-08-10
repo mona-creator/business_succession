@@ -4,7 +4,7 @@
             <h2>マイページ</h2>
 			<table>
 				<th>登録情報</th>
-				<td><%= link_to "編集する", edit_user_path, class: "btn btn-primary mypage-btn-1" %></td>
+				<td><%= link_to "Edit", edit_user_path, class: "btn btn-primary mypage-btn-1" %></td>
 			</table>
 			<table class="table table-bordered mypage-table">
 				<tbody>
@@ -35,7 +35,7 @@
 				</tbody>
 			</table>
             <h2>投稿企業一覧</h2>
-		         <% @user.companies.each do |company| %>
+		        <% @user.companies.each do |company| %>
 					<table class="table table-bordered">
 						<thead>
 							<tr>
@@ -46,13 +46,7 @@
 								<th class="active">所在地</th>
 							</tr>
 						</thead>
-		         	    <h2><%= link_to  company.company_name, company, class: "company_#{company.id}" %>
-			         		<% if @company.user == current_user %>
-						        <%= link_to "", company_path(@company), method: :delete %>
-						        <%= link_to "Edit",edit_company_path(@company), class: "btn btn-primary btn-sm edit_company_#{@company.id}" %>
-						        <%= link_to 'Destroy', @company, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm destroy_book_#{@company.id}"%>
-					        <% end %>
-		         	    </h2>
+		         	    <h2><%= link_to  company.company_name, company, class: "company_#{company.id}" %></h2>
 		                    <div id="favorites_buttons_<%= company.id %>">
 		                        <%= render partial: 'favorites/favorite', locals: { company: company} %>
 		         	            <%= company.company_comments.count %>件コメント

@@ -11,14 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if @user.save
-      NotificationMailer.complete_mail(@user).deliver
-      redirect_to @user
-    else
-      redirect_to root_path
-    end
+    super
+    NotificationMailer.complete_mail(resource).deliver
   end
-end
   # GET /resource/edit
   # def edit
   #   super

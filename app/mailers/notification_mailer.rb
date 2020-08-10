@@ -1,4 +1,5 @@
 class NotificationMailer < ApplicationMailer
+
   def complete_mail(user)
     @user = user
    mail(

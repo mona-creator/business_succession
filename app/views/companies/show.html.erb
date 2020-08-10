@@ -1,14 +1,16 @@
 <%= render 'layouts/header' %>
     <div class="col-xs-offset-1 col-xs-10">
         <h1><%= @company.company_name %></h1>
-            <div id="favorites_buttons_<%= @company.id %>">
-                <%= render partial: 'favorites/favorite', locals: { company: @company} %>
+            <div>
+                <span id="favorites_buttons_<%= @company.id %>">
+                    <%= render partial: 'favorites/favorite', locals: { company: @company} %>
+                </span>
                 <%= @company.company_comments.count %>件コメント
-                <% if @company.user == current_user %>
-                    <%= link_to "", company_path(@company), method: :delete %>
-                    <%= link_to "Edit",edit_company_path(@company), class: "btn btn-primary btn-sm edit_company_#{@company.id}" %>
-                    <%= link_to 'Destroy', @company, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm destroy_book_#{@company.id}"%>
-                <% end %>
+                    <% if @company.user == current_user %>
+                        <%= link_to "", company_path(@company), method: :delete %>
+                        <%= link_to "Edit",edit_company_path(@company), class: "btn btn-primary btn-sm edit_company_#{@company.id}" %>
+                        <%= link_to 'Destroy', @company, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm destroy_book_#{@company.id}"%>
+                    <% end %>
             </div>
         <table class="table table-bordered">
             <thead>
@@ -29,7 +31,7 @@
             </tbody>
         </table>
     </div>
-    <h3 class="col-xs-offset-1 col-xs-10">財務情報</h3>
+    <h3 class="col-xs-offset-1 col-xs-12">財務情報</h3>
     <div class="col-xs-offset-1 col-xs-5">
         <table class="table table-bordered company-table">
             <tbody>
@@ -49,7 +51,7 @@
         </table>
     </div>
     <div class="col-xs-5">
-        <table class="table table-bordered company-financial-table">
+        <table class="table table-bordered company-table">
             <tbody>
                 <tr>
                     <th class="active">総資産</th>
@@ -113,11 +115,15 @@
                 </tr>
             </tbody>
         </table>
+    <h3>コメント</h3>
         <% @company.company_comments.each do |company_comment| %>
         <table>
             <tbody>
                 <tr>
-                    <td><%= company_comment.user.surname %></td>
+                    <td><%= company_comment.created_at.strftime('%Y/%m/%d') %></td>
+                    <td><%= company_comment.user.surname + company_comment.user.first_name %></td>
+                </tr>
+                <tr>
                     <td><%= company_comment.comment %></td>
                     <% if company_comment.user == current_user %>
                         <td><%= link_to "Destroy",company_company_comment_path(company_comment.id), method: :delete, class: "btn-sm btn-danger" %></td>
@@ -126,12 +132,14 @@
             </tbody>
         </table>
         <% end %>
-        <%= form_for [@company, @company_comment] do |f| %>
-            <div class="row">
-                <div class="col-xs-12">
-                    <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+        <% if user_signed_in? %>
+            <%= form_for [@company, @company_comment] do |f| %>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+                    </div>
                 </div>
-            </div>
-            <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+                <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+            <% end %>
         <% end %>
     </div>

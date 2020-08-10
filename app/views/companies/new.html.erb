@@ -2,84 +2,92 @@
 	<div class="col-xs-offset-1 col-xs-10">
 		<h1>新規登録 企業詳細</h1>
 		    <%= form_for(@company) do |f| %>
+
+		    <!-- エラーメッセージ表示-->
+		      <% if @company.errors.any? %>
+			   <h3><%= @company.errors.count %>error occurrence</h3><!--エラーメッセ-->
+			   <ul>
+			       <% @company.errors.full_messages.each do |message| %>
+			   <li><%= message %></li>
+			       <% end %>
+			   </ul>
+			  <% end %>
+            <!-- エラーメッセージ表示-->
+
 			    <div class="field form-group">
-					<%= f.label :企業名（屋号） %>
+					<%= f.label :企業名（屋号）, class: "col-sm-3"  %>
 					<%= f.text_field :company_name, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :業種 %>
+					<%= f.label :業種, class: "col-sm-3" %>
 					<%= f.text_field :industry, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :売却希望価格（百万円） %>
+					<%= f.label :売却希望価格（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :disposal_desired_price, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :会計年度（西暦） %>
+					<%= f.label :会計年度（西暦）, class: "col-sm-3" %>
 					<%= f.text_field :fiscal_year, autofocus: true %>
 				</div>
 				<div class="field form-group">
-					<%= f.label :所在地 %>
+					<%= f.label :所在地, class: "col-sm-3" %>
 					<%= f.text_field :company_address, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :売上高（百万円） %>
+					<%= f.label :売上高（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :sale, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :営業利益（百万円） %>
+					<%= f.label :営業利益（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :operating_income, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :総資産（百万円） %>
+					<%= f.label :総資産（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :total_asset, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :有利子負債（百万円） %>
+					<%= f.label :有利子負債（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :interest_bearing_debt, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :純資産（百万円） %>
+					<%= f.label :純資産（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :net_asset, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :従業員数 %>
+					<%= f.label :従業員数, class: "col-sm-3" %>
 					<%= f.text_field :employee_number, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :譲渡対象遺産 %>
+					<%= f.label :譲渡対象遺産, class: "col-sm-3" %>
 					<%= f.text_field :transfer_target_asset, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :譲渡理由 %>
-					<%= f.text_field :transfer_reason, autofocus: true %>
-				</div>
-			    <div class="field form-group">
-					<%= f.label :事業概要 %>
-					<%= f.text_area :business_overview, autofocus: true %>
-				</div>
-			    <div class="field form-group">
-					<%= f.label :顧客 %>
+					<%= f.label :顧客, class: "col-sm-3" %>
 					<%= f.text_field :customer, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :製品サービス %>
-					<%= f.text_area :product_service, autofocus: true %>
+					<%= f.label :譲渡理由, class: "col-sm-3" %>
+					<%= f.text_field :transfer_reason, autofocus: true %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :事業概要 %>
-					<%= f.text_area :business_overview, autofocus: true %>
+					<%= f.label :事業概要, class: "col-sm-3" %>
+					<%= f.text_area :business_overview, autofocus: true, class: "input-field" %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :事業の強み %>
-					<%= f.text_area :business_strength, autofocus: true %>
+					<%= f.label :製品サービス, class: "col-sm-3" %>
+					<%= f.text_area :product_service, autofocus: true, class: "input-field" %>
 				</div>
 			    <div class="field form-group">
-					<%= f.label :補足情報 %>
-					<%= f.text_area :supplement_information, autofocus: true %>
+					<%= f.label :事業の強み, class: "col-sm-3" %>
+					<%= f.text_area :business_strength, autofocus: true, class: "input-field" %>
+				</div>
+			    <div class="field form-group">
+					<%= f.label :補足情報, class: "col-sm-3" %>
+					<%= f.text_area :supplement_information, autofocus: true, class: "input-field" %>
 				</div>
 				<div class="actions row">
-					<%= f.submit class: "btn btn-primary col-xs-12" %>
+					<%= f.submit "新規登録", class: "btn btn-primary col-xs-4" %>
 				</div>
     		<% end %>
 	</div>
