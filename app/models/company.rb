@@ -14,4 +14,11 @@ class Company < ApplicationRecord
        	all
        end
     end
+
+  validates :company_name,:company_address, presence: true, length: { maximum: 50 }
+  validates :industry,:sale,:operating_income,:disposal_desired_price,:fiscal_year,
+            :total_asset,:interest_bearing_debt,:net_asset,:employee_number, presence: true, length: { maximum: 10 }
+  validates :transfer_target_asset,:transfer_reason,:business_overview,:customer,
+            :product_service,:business_strength,:supplement_information, presence: true, length: { maximum: 100 }
+
 end

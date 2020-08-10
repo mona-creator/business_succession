@@ -7,17 +7,19 @@ class CompaniesController < ApplicationController
 	def create
     @company = Company.new(company_params)
     @company.user_id = current_user.id
-    @company.save
-    redirect_to company_path(@company.id)
+    if @company.save
+      redirect_to company_path(@company.id)
+    else
+      render "new"
+    end
 	end
 
 	def index
-    #@companies = Company.all
     @companies = Company.search(params[:search])
 	end
 
   def ranks
-      @all_ranks = Company.find(Favorite.group(:company_id).order('count(company_id)desc').limit(3).pluck(:company_id))
+    @all_ranks = Company.find(Favorite.group(:company_id).order('count(company_id)desc').limit(3).pluck(:company_id))
   end
 
 	def show
