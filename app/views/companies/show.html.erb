@@ -120,14 +120,15 @@
         <table>
             <tbody>
                 <tr>
-                    <td><%= company_comment.created_at.strftime('%Y/%m/%d') %></td>
-                    <td><%= company_comment.user.surname + company_comment.user.first_name %></td>
+                    <td><%= company_comment.created_at.strftime('%Y/%m/%d') %>
+                        <%= company_comment.user.surname + company_comment.user.first_name %>
+                        <% if company_comment.user == current_user %>
+                        <%= link_to "Destroy",company_company_comment_path(company_comment.id), method: :delete, class: "btn-sm btn-danger" %>
+                        <% end %>
+                    </td>
                 </tr>
                 <tr>
                     <td><%= company_comment.comment %></td>
-                    <% if company_comment.user == current_user %>
-                        <td><%= link_to "Destroy",company_company_comment_path(company_comment.id), method: :delete, class: "btn-sm btn-danger" %></td>
-                    <% end %>
                </tr>
             </tbody>
         </table>
