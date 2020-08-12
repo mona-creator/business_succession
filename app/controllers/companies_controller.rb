@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-
+        before_action :authenticate_user!, only: [:new, :ranks]
 	def new
     @company = Company.new
 	end

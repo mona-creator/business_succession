@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   context "データが正しく保存される" do
     before do
       @user = User.new
-      @user.email = "daitoukyo09120403@yahoo.co.jp"
+      @user.email = ""
       @user.surname = "山田"
       @user.first_name = "太郎"
       @user.surname_kana = "ヤマダ"
@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
   context "データが正しく保存されない" do
     before do
       @user = User.new
-      @user.email = "daitoukyo09120403@yahoo.co.jp"
+      @user.email = ""
       @user.surname = ""
       @user.first_name = "太郎"
       @user.surname_kana = "ヤマダ"
