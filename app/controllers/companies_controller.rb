@@ -17,6 +17,7 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = Company.search(params[:search])
+    @companies = Company.page(params[:page]).reverse_order
   end
 
   def ranks
