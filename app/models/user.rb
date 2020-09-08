@@ -8,8 +8,7 @@ class User < ApplicationRecord
   has_many :company_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :surname,:first_name,:surname_kana,:first_name_kana,:postal_code, presence: true, length: { maximum: 10 }
+  validates :surname, :first_name, :surname_kana, :first_name_kana, :postal_code, presence: true, length: { maximum: 10 }
   validates :address, presence: true, length: { maximum: 20 }
   validates :phone_number, presence: true, length: { maximum: 15 }
 end
-

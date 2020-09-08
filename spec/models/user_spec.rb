@@ -14,11 +14,13 @@ RSpec.describe User, type: :model do
       @user.phone_number = "08012345678"
       @user.save
     end
+
     it "全て入力してあるので保存される" do
       expect(@user).to be_valid
     end
   end
   # ここから追加
+
   context "データが正しく保存されない" do
     before do
       @user = User.new
@@ -32,11 +34,12 @@ RSpec.describe User, type: :model do
       @user.phone_number = "08012345678"
       @user.save
     end
+
     it "surnameが入力されていないので保存されない" do
       expect(@user).to be_invalid
       expect(@user.errors[:surname]).to include("can't be blank")
     end
-  end  # ここまで追加
+  end # ここまで追加
 end
 #    describe 'バリデーションのテスト' do
 #     let(:user) { build(:user) }

@@ -1,7 +1,7 @@
 <%= render 'layouts/header' %>
     <div class="col-xs-offset-1 col-xs-10">
         <h2>気になるランキング</h2>
-        <% @all_ranks.each.with_index(1) do |company, i| %>
+        <% @sorted_companies.each.with_index(1) do |company, i| %>
 		    <table class="table table-bordered">
 			    <thead>
 				    <tr>

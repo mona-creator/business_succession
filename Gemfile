@@ -50,6 +50,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "letter_opener"
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -72,7 +73,6 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'jquery-rails'
-
 
 gem 'dotenv-rails'
 group :production do

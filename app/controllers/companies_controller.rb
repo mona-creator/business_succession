@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
-        before_action :authenticate_user!, only: [:new, :ranks]
-	def new
+  before_action :authenticate_user!, only: [:new, :ranks]
+  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  def new
     @company = Company.new
-	end
+  end
 
-	def create
+  def create
     @company = Company.new(company_params)
     @company.user_id = current_user.id
     if @company.save
@@ -12,49 +13,49 @@ class CompaniesController < ApplicationController
     else
       render "new"
     end
-	end
-
-	def index
-    @companies = Company.search(params[:search])
-	end
-
-  def ranks
-    @all_ranks = Company.find(Favorite.group(:company_id).order('count(company_id)desc').limit(3).pluck(:company_id))
   end
 
-	def show
-    @company = Company.find(params[:id])
-    @user = current_user
+  def index
+    @companies = Company.search(params[:search])
+  end
+
+  def ranks
+    @sorted_companies = Company.find(Favorite.group(:company_id).order('count(company_id)desc').limit(3).pluck(:company_id))
+  end
+
+  def show
     @company_comment = CompanyComment.new
-	end
+  end
 
-	def edit
-    @company = Company.find(params[:id])
+  def edit
     if @company.user == current_user
-       render "edit"
+      render "edit"
     else
-       redirect_to companies_path
+      redirect_to companies_path
     end
-	end
+  end
 
-	def update
-    @company = Company.find(params[:id])
+  def update
     if @company.update(company_params)
-       redirect_to company_path, notice: "successfully updated company!"
-	  else
+      redirect_to company_path, notice: "successfully updated company!"
+    else
       render "edit"
     end
   end
 
-	def destroy
-    @company = Company.find(params[:id])
+  def destroy
     @company.destroy
     redirect_to user_path(current_user)
-	end
+  end
 
-private
-    def company_params
-     params.require(:company).permit(
+  private
+
+  def set_company
+    @company = Company.find(params[:id])
+  end
+
+  def company_params
+    params.require(:company).permit(
       :user_id,
       :image_id,
       :company_name,
@@ -75,7 +76,6 @@ private
       :product_service,
       :business_strength,
       :supplement_information,
-     )
-    end
+    )
+  end
 end
-
