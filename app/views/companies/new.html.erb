@@ -86,6 +86,10 @@
 					<%= f.label :補足情報, class: "col-sm-3" %>
 					<%= f.text_area :supplement_information, autofocus: true, class: "input-field" %>
 				</div>
+				<div class="field form-group">
+					<%= f.label :画像, class: "col-sm-3" %>
+  　　　　　　　　　　<%= f.attachment_field :image, :multiple => true %>
+  				</div>
 				<div class="actions row">
 					<%= f.submit "新規登録", class: "btn btn-primary col-xs-4" %>
 				</div>

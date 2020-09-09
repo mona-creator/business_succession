@@ -86,6 +86,10 @@
 				<%= f.label :補足情報, class: "col-sm-3" %>
 				<%= f.text_area :supplement_information, autofocus: true, class: "input-field" %>
 			</div>
+			<div class="field form-group">
+					<%= f.label :画像, class: "col-sm-3" %>
+  　　　　　　　　　　<%= f.attachment_field :image %>
+  			</div>
 			<div class="actions row">
 				<%= f.submit "編集内容を保存する",class: "btn btn-primary" %>
 			</div>

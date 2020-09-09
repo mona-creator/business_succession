@@ -115,6 +115,8 @@
                 </tr>
             </tbody>
         </table>
+    <h3>画像</h3>
+    <%= attachment_image_tag @company, :image, :fill, 300, 300, format: 'jpeg' %>
     <h3>コメント</h3>
         <% @company.company_comments.each do |company_comment| %>
         <table>

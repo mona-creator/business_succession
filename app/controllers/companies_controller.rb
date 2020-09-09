@@ -58,7 +58,7 @@ class CompaniesController < ApplicationController
   def company_params
     params.require(:company).permit(
       :user_id,
-      :image_id,
+      :image,
       :company_name,
       :industry,
       :sale,
