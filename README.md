@@ -19,4 +19,5 @@ Business.Succession
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1SjUjbrq14TR7KPoH2du4g28V-Jj_rPYaNdVTMi2H454/edit#gid=0
 
-
+## インフラ設計書
+https://docs.google.com/spreadsheets/d/11PcMI-zRsQBHwUy6HxfYkfL-y1BIclvLe-ud5MlSGDQ/edit#gid=0
