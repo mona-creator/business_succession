@@ -4,14 +4,15 @@ RSpec.describe User, type: :model do
   context "データが正しく保存される" do
     before do
       @user = User.new
-      @user.email = ""
       @user.surname = "山田"
       @user.first_name = "太郎"
       @user.surname_kana = "ヤマダ"
       @user.first_name_kana = "タロウ"
+      @user.email = "yamada@tarou"
       @user.postal_code = "7654321"
       @user.address = "東京都千代田区1-1-1"
       @user.phone_number = "08012345678"
+      @user.password = "qazwsx"
       @user.save
     end
 
@@ -39,7 +40,7 @@ RSpec.describe User, type: :model do
       expect(@user).to be_invalid
       expect(@user.errors[:surname]).to include("can't be blank")
     end
-  end # ここまで追加
+  end
 end
 #    describe 'バリデーションのテスト' do
 #     let(:user) { build(:user) }
