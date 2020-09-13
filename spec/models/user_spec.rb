@@ -1,79 +1,57 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context "データが正しく保存される" do
-    before do
-      @user = User.new
-      @user.surname = "山田"
-      @user.first_name = "太郎"
-      @user.surname_kana = "ヤマダ"
-      @user.first_name_kana = "タロウ"
-      @user.email = "yamada@tarou"
-      @user.postal_code = "7654321"
-      @user.address = "東京都千代田区1-1-1"
-      @user.phone_number = "08012345678"
-      @user.password = "qazwsx"
-      @user.save
-    end
-
-    it "全て入力してあるので保存される" do
-      expect(@user).to be_valid
-    end
+  it "姓、名、カナ、メール、住所、郵便番号、電話番号、パスワードがある場合、有効である" do
+    expect(FactoryBot.create(:user)).to be_valid
   end
-  # ここから追加
 
-  context "データが正しく保存されない" do
-    before do
-      @user = User.new
-      @user.email = ""
-      @user.surname = ""
-      @user.first_name = "太郎"
-      @user.surname_kana = "ヤマダ"
-      @user.first_name_kana = "タロウ"
-      @user.postal_code = "7654321"
-      @user.address = "東京都千代田区1-1-1"
-      @user.phone_number = "08012345678"
-      @user.save
-    end
+  it "姓がない場合、無効である" do
+    user = FactoryBot.build(:user, surname: nil)
+    user.valid?
+    expect(user.errors[:surname]).to include("can't be blank")
+  end
 
-    it "surnameが入力されていないので保存されない" do
-      expect(@user).to be_invalid
-      expect(@user.errors[:surname]).to include("can't be blank")
-    end
+  it "名がない場合、無効である" do
+    user = FactoryBot.build(:user, first_name: nil)
+    user.valid?
+    expect(user.errors[:first_name]).to include("can't be blank")
+  end
+
+  it "姓(カナ)がない場合、無効である" do
+    user = FactoryBot.build(:user, surname_kana: nil)
+    user.valid?
+    expect(user.errors[:surname_kana]).to include("can't be blank")
+  end
+
+  it "名(カナ)がない場合、無効である" do
+    user = FactoryBot.build(:user, first_name_kana: nil)
+    user.valid?
+    expect(user.errors[:first_name_kana]).to include("can't be blank")
+  end
+
+
+  it "メールアドレスがない場合、無効である"  do
+    user = FactoryBot.build(:user, email: nil)
+    user.valid?
+    expect(user.errors[:email]).to include("can't be blank")
+  end
+
+
+  it "郵便番号がない場合は、無効である" do
+    user = FactoryBot.build(:user, postal_code: nil)
+    user.valid?
+    expect(user.errors[:postal_code]).to include("can't be blank")
+  end
+
+  it "住所がない場合は、無効である" do
+    user = FactoryBot.build(:user, address: nil)
+    user.valid?
+    expect(user.errors[:address]).to include("can't be blank")
+  end
+
+  it "電話番号がない場合、無効である" do
+    user = FactoryBot.build(:user, phone_number: nil)
+    user.valid?
+    expect(user.errors[:phone_number]).to include("can't be blank")
   end
 end
-#    describe 'バリデーションのテスト' do
-#     let(:user) { build(:user) }
-#     subject { test_user.valid? }
-#     context 'surnameカラム' do
-#       let(:test_user) { user }
-#       it '空欄でないこと' do
-#         test_user.surname = ''
-#         is_expected.to eq false;
-#       end
-#       it '1文字以上であること' do
-#         test_user.surname = Faker::Lorem.characters(number:0)
-#         is_expected.to eq false;
-#       end
-#       it '10文字以下であること' do
-#         test_user.surname = Faker::Lorem.characters(number:11)
-#         is_expected.to eq false;
-#       end
-#     end
-
-#     context 'addressカラム' do
-#       let(:test_user) { user }
-#       it '20文字以下であること' do
-#         test_user.address = Faker::Lorem.characters(number:21)
-#         is_expected.to eq false
-#       end
-#     end
-#   end
-#   describe 'アソシエーションのテスト' do
-#     context 'Companyモデルとの関係' do
-#       it '1:Nとなっている' do
-#         expect(User.reflect_on_association(:books).macro).to eq :has_many
-#       end
-#     end
-#   end
-# end

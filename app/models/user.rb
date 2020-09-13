@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :surname, :first_name, :surname_kana, :first_name_kana, :postal_code, presence: true, length: { maximum: 10 }
   validates :address, presence: true, length: { maximum: 20 }
   validates :phone_number, presence: true, length: { maximum: 15 }
+  devise :validatable, password_length: 6..128
+
 end
