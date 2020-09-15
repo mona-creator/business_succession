@@ -53,10 +53,57 @@
 		                    </div>
 		                <tbody>
 						    <td><%= company.industry %></td>
-						    <td><%= company.sale %>百万円</td>
-						    <td><%= company.operating_income %>百万円</td>
-						    <td><%= company.disposal_desired_price %>百万円</td>
-						    <td><%= company.company_address %></td>
+<!-- 						    <td><%= company.sale %>百万円</td>-->
+                            <td><% if company.sale == 1 then %>
+									    0万円～500万円
+								<% elsif company.sale == 2 then %>
+									    500万円～1000万円
+								<% elsif company.sale == 3 then %>
+									    1000万円～1500万円
+								<% elsif company.sale == 4 then %>
+									    1500万円～2000万円
+								<% elsif company.sale == 5 then %>
+									    2000万円～2500万円
+							    <% elsif company.sale == 6 then %>
+									    2500万円～3000万円
+								<% elsif company.sale == 7 then %>
+									    3000万円以上
+								<% else %>
+								<% end %>
+							</td>
+ <!-- 						    <td><%= company.operating_income %>百万円</td>
+						 --><td><% if company.operating_income == 1 then %>
+									    0万円～500万円
+								<% elsif company.operating_income == 2 then %>
+									    500万円～1000万円
+								<% elsif company.operating_income == 3 then %>
+									    1000万円～1500万円
+								<% elsif company.operating_income == 4 then %>
+									    1500万円～2000万円
+								<% elsif company.operating_income == 5 then %>
+									    2000万円～2500万円
+							    <% elsif company.operating_income == 6 then %>
+									    2500万円～3000万円
+								<% elsif company.operating_income == 7 then %>
+									    3000万円以上
+								<% elsif company.operating_income == 8 then %>
+									    赤字
+								<% else %>
+								<% end %>
+							</td>
+								<!-- 						    <td><%= company.disposal_desired_price %>百万円</td>
+						 --><td><% if company.disposal_desired_price == 1 then %>
+								　　　　　0万円～500万円
+								<% elsif company.disposal_desired_price == 2 then %>
+								　　　　　500万円～1000万円
+								<% elsif company.disposal_desired_price == 3 then %>
+								　　　　　1000万円～1500万円
+								<% elsif company.disposal_desired_price == 4 then %>
+								　　　　　1500万円以上
+								<% else %>
+								<% end %>
+							</td>
+ 					    <td><%= company.company_address %></td>
 		                </tbody>
 		            </table>
 		        <% end %>

@@ -24,9 +24,56 @@
             </thead>
             <tbody>
                     <td><%= @company.industry %></td>
-                    <td><%= @company.sale %>百万円</td>
-                    <td><%= @company.operating_income %>百万円</td>
-                    <td><%= @company.disposal_desired_price %>百万円</td>
+<!--                     <td><%= @company.sale %>百万円</td>
+                 --><td><% if @company.sale == 1 then %>
+                                0万円～500万円
+                        <% elsif @company.sale == 2 then %>
+                                500万円～1000万円
+                        <% elsif @company.sale == 3 then %>
+                                1000万円～1500万円
+                        <% elsif @company.sale == 4 then %>
+                                1500万円～2000万円
+                        <% elsif @company.sale == 5 then %>
+                                2000万円～2500万円
+                        <% elsif @company.sale == 6 then %>
+                                2500万円～3000万円
+                        <% elsif @company.sale == 7 then %>
+                                3000万円以上
+                        <% else %>
+                        <% end %>
+                    </td>
+<!--                      <td><%= @company.operating_income %>百万円</td>
+ -->                <td><% if @company.operating_income == 1 then %>
+                                0万円～500万円
+                        <% elsif @company.operating_income == 2 then %>
+                                500万円～1000万円
+                        <% elsif @company.operating_income == 3 then %>
+                                1000万円～1500万円
+                        <% elsif @company.operating_income == 4 then %>
+                                1500万円～2000万円
+                        <% elsif @company.operating_income == 5 then %>
+                                2000万円～2500万円
+                        <% elsif @company.operating_income == 6 then %>
+                                2500万円～3000万円
+                        <% elsif @company.operating_income == 7 then %>
+                                3000万円以上
+                        <% elsif @company.operating_income == 8 then %>
+                                赤字
+                        <% else %>
+                        <% end %>
+                    </td>
+ <!--                     <td><%= @company.disposal_desired_price %>百万円</td>
+ -->                <td><% if @company.disposal_desired_price == 1 then %>
+                        0万円～500万円
+                        <% elsif @company.disposal_desired_price == 2 then %>
+                        500万円～1000万円
+                        <% elsif @company.disposal_desired_price == 3 then %>
+                        1000万円～1500万円
+                        <% elsif @company.disposal_desired_price == 4 then %>
+                        1500万円以上
+                        <% else %>
+                        <% end %>
+                    </td>
                     <td><%= @company.company_address %></td>
             </tbody>
         </table>
@@ -37,15 +84,62 @@
             <tbody>
                 <tr>
                     <th class="active", style="width:150px">会計年度</th>
-                    <td><%= @company.fiscal_year %>年度</td>
+<!--                     <td><%= @company.fiscal_year %>年度</td>-->
+                    <td><% if @company.fiscal_year == 1 then %>
+                        2020年度
+                        <% elsif @company.fiscal_year == 2 then %>
+                        2019年度
+                        <% elsif @company.fiscal_year == 3 then %>
+                        2018年度
+                        <% elsif @company.fiscal_year == 4 then %>
+                        その他
+                        <% else %>
+                        <% end %>
+                    </td>
                 </tr>
                 <tr>
                     <th class="active">売上高</th>
-    		        <td><%= @company.total_asset %>百万円</td>
+<!--     		        <td><%= @company.total_asset %>百万円</td> -->
+                    <td><% if @company.sale == 1 then %>
+                                0万円～500万円
+                        <% elsif @company.sale == 2 then %>
+                                500万円～1000万円
+                        <% elsif @company.sale == 3 then %>
+                                1000万円～1500万円
+                        <% elsif @company.sale == 4 then %>
+                                1500万円～2000万円
+                        <% elsif @company.sale == 5 then %>
+                                2000万円～2500万円
+                        <% elsif @company.sale == 6 then %>
+                                2500万円～3000万円
+                        <% elsif @company.sale == 7 then %>
+                                3000万円以上
+                        <% else %>
+                        <% end %>
+                    </td>
                 </tr>
                 <tr>
                     <th class="active">営業利益</th>
-    		        <td><%= @company.interest_bearing_debt %>百万円</td>
+<!--     		        <td><%= @company.interest_bearing_debt %>百万円</td> -->
+                    <td><% if @company.operating_income == 1 then %>
+                                0万円～500万円
+                        <% elsif @company.operating_income == 2 then %>
+                                500万円～1000万円
+                        <% elsif @company.operating_income == 3 then %>
+                                1000万円～1500万円
+                        <% elsif @company.operating_income == 4 then %>
+                                1500万円～2000万円
+                        <% elsif @company.operating_income == 5 then %>
+                                2000万円～2500万円
+                        <% elsif @company.operating_income == 6 then %>
+                                2500万円～3000万円
+                        <% elsif @company.operating_income == 7 then %>
+                                3000万円以上
+                        <% elsif @company.operating_income == 8 then %>
+                                赤字
+                        <% else %>
+                        <% end %>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -55,15 +149,68 @@
             <tbody>
                 <tr>
                     <th class="active">総資産</th>
-                    <td><%= @company.total_asset %>百万円</td>
+<!--                     <td><%= @company.total_asset %>百万円</td> -->
+                    <td><% if @company.total_asset == 1 then %>
+                                0万円～500万円
+                        <% elsif @company.total_asset == 2 then %>
+                                500万円～1000万円
+                        <% elsif @company.total_asset == 3 then %>
+                                1000万円～1500万円
+                        <% elsif @company.total_asset == 4 then %>
+                                1500万円～2000万円
+                        <% elsif @company.total_asset == 5 then %>
+                                2000万円～2500万円
+                        <% elsif @company.total_asset == 6 then %>
+                                2500万円～3000万円
+                        <% elsif @company.total_asset == 7 then %>
+                                3000万円以上
+                        <% elsif @company.total_asset == 8 then %>
+                                赤字
+                        <% else %>
+                        <% end %>
+                    </td>
                 </tr>
                 <tr>
                     <th class="active">有利子負債</th>
-                    <td><%= @company.interest_bearing_debt %>百万円</td>
+<!--                     <td><%= @company.interest_bearing_debt %>百万円</td>-->
+                    <td><% if @company.interest_bearing_debt == 1 then %>
+                                0万円～500万円
+                        <% elsif @company.interest_bearing_debt == 2 then %>
+                                500万円～1000万円
+                        <% elsif @company.interest_bearing_debt == 3 then %>
+                                1000万円～1500万円
+                        <% elsif @company.interest_bearing_debt == 4 then %>
+                                1500万円～2000万円
+                        <% elsif @company.interest_bearing_debt == 5 then %>
+                                2000万円～2500万円
+                        <% elsif @company.interest_bearing_debt == 6 then %>
+                                2500万円～3000万円
+                        <% elsif @company.interest_bearing_debt == 7 then %>
+                                3000万円以上
+                        <% else %>
+                        <% end %>
+                    </td>
                 </tr>
                 <tr>
                     <th class="active">純資産</th>
-                    <td><%= @company.net_asset %>百万円</td>
+<!--                     <td><%= @company.net_asset %>百万円</td> -->
+                    <td><% if @company.net_asset == 1 then %>
+                                0万円～500万円
+                        <% elsif @company.net_asset == 2 then %>
+                                500万円～1000万円
+                        <% elsif @company.net_asset == 3 then %>
+                                1000万円～1500万円
+                        <% elsif @company.net_asset == 4 then %>
+                                1500万円～2000万円
+                        <% elsif @company.net_asset == 5 then %>
+                                2000万円～2500万円
+                        <% elsif @company.net_asset == 6 then %>
+                                2500万円～3000万円
+                        <% elsif @company.net_asset == 7 then %>
+                                3000万円以上
+                        <% else %>
+                        <% end %>
+                    </td>
                 </tr>
             </tbody>
        </table>
@@ -74,7 +221,26 @@
            	<tbody>
                 <tr>
                     <th class="active", style="width:150px">従業員数</th>
-    		        <td><%= @company.employee_number %>人</td>
+<!--     		        <td><%= @company.employee_number %>人</td> -->
+                    <td><% if @company.net_asset == 1 then %>
+                                社員なし
+                        <% elsif @company.net_asset == 2 then %>
+                                5人以下
+                        <% elsif @company.net_asset == 3 then %>
+                                10人以下
+                        <% elsif @company.net_asset == 4 then %>
+                                20人以下
+                        <% elsif @company.net_asset == 5 then %>
+                                30人以下
+                        <% elsif @company.net_asset == 6 then %>
+                                40人以下
+                        <% elsif @company.net_asset == 7 then %>
+                                50人以下
+                        <% elsif @company.net_asset == 8 then %>
+                                50人以上
+                        <% else %>
+                        <% end %>
+                    </td>
                 </tr>
                 <tr>
                     <th class="active">譲渡対象遺産</th>

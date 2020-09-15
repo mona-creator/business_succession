@@ -22,41 +22,75 @@
 					<%= f.label :業種, class: "col-sm-3" %>
 					<%= f.text_field :industry, autofocus: true %>
 				</div>
-			    <div class="field form-group">
+			   <!--  <div class="field form-group">
 					<%= f.label :売却希望価格（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :disposal_desired_price, autofocus: true %>
-				</div>
-			    <div class="field form-group">
+				</div> -->
+				<div class="field form-group">
+					<%= f.label :売却希望価格, class: "col-sm-3" %>
+				    <%= f.select :disposal_desired_price,[["0万円～500万円", "1"],["500万円～1000万円", "2"],["1000万円～1500万円", "3"],["1500万円以上", "4"]] %>
+                </div>
+
+			    <!-- <div class="field form-group">
 					<%= f.label :会計年度（西暦）, class: "col-sm-3" %>
 					<%= f.text_field :fiscal_year, autofocus: true %>
-				</div>
+				</div> -->
+				<div class="field form-group">
+					<%= f.label :会計年度（西暦）, class: "col-sm-3" %>
+				    <%= f.select :fiscal_year,[['2020年度', "1"],['2019年度', "2"],['2018年度', "3"],['その他', "4"]] %>
+                </div>
+
 				<div class="field form-group">
 					<%= f.label :所在地, class: "col-sm-3" %>
 					<%= f.text_field :company_address, autofocus: true %>
 				</div>
-			    <div class="field form-group">
+			    <!-- <div class="field form-group">
 					<%= f.label :売上高（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :sale, autofocus: true %>
-				</div>
-			    <div class="field form-group">
+				</div> -->
+				<div class="field form-group">
+					<%= f.label :売上高, class: "col-sm-3" %>
+				    <%= f.select :sale,[['0万円～500万円', "1"],['500万円～1000万円', "2"],['1000万円～1500万円', "3"],['1500万円～2000万円', "4"],['2000万円～2500万円', "5"],['2500万円～3000万円', "6"],['3000万円以上', "7"]] %>
+                </div>
+			    <!-- <div class="field form-group">
 					<%= f.label :営業利益（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :operating_income, autofocus: true %>
+				</div> -->
+				<div class="field form-group">
+					<%= f.label :営業利益, class: "col-sm-3" %>
+				    <%= f.select :operating_income,[['0万円～500万円', "1"],['500万円～1000万円', "2"],['1000万円～1500万円', "3"],['1500万円～2000万円', "4"],['2000万円～2500万円', "5"],['2500万円～3000万円', "6"],['3000万円以上', "7"],['赤字', "8"]] %>
 				</div>
-			    <div class="field form-group">
+			    <!-- <div class="field form-group">
 					<%= f.label :総資産（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :total_asset, autofocus: true %>
+				</div> -->
+				<div class="field form-group">
+					<%= f.label :総資産, class: "col-sm-3" %>
+				    <%= f.select :total_asset,[['0万円～500万円', "1"],['500万円～1000万円', "2"],['1000万円～1500万円', "3"],['1500万円～2000万円', "4"],['2000万円～2500万円', "5"],['2500万円～3000万円', "6"],['3000万円以上', "7"],['赤字', "8"]] %>
 				</div>
-			    <div class="field form-group">
+			    <!-- <div class="field form-group">
 					<%= f.label :有利子負債（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :interest_bearing_debt, autofocus: true %>
+				</div> -->
+				<div class="field form-group">
+					<%= f.label :有利子負債, class: "col-sm-3" %>
+				    <%= f.select :interest_bearing_debt,[['0万円～500万円', "1"],['500万円～1000万円', "2"],['1000万円～1500万円', "3"],['1500万円～2000万円', "4"],['2000万円～2500万円', "5"],['2500万円～3000万円', "6"],['3000万円以上', "7"]] %>
 				</div>
-			    <div class="field form-group">
+			    <!-- <div class="field form-group">
 					<%= f.label :純資産（百万円）, class: "col-sm-3" %>
 					<%= f.text_field :net_asset, autofocus: true %>
+				</div> -->
+				<div class="field form-group">
+					<%= f.label :純資産, class: "col-sm-3" %>
+				    <%= f.select :net_asset,[['0万円～500万円', "1"],['500万円～1000万円', "2"],['1000万円～1500万円', "3"],['1500万円～2000万円', "4"],['2000万円～2500万円', "5"],['2500万円～3000万円', "6"],['3000万円以上', "7"]] %>
 				</div>
-			    <div class="field form-group">
+			    <!-- <div class="field form-group">
 					<%= f.label :従業員数, class: "col-sm-3" %>
 					<%= f.text_field :employee_number, autofocus: true %>
+				</div> -->
+				<div class="field form-group">
+					<%= f.label :従業員数, class: "col-sm-3" %>
+				    <%= f.select :employee_number,[['社員なし', "1"],['5人以下', "2"],['10人以下', "3"],['20人以下', "4"],['30人以下', "5"],['40人以下', "6"],['50人以下', "7"],['50人以上', "8"]] %>
 				</div>
 			    <div class="field form-group">
 					<%= f.label :譲渡対象遺産, class: "col-sm-3" %>
